@@ -1,0 +1,7 @@
+{
+  "token": "insert-bot-token",
+  "prefix": "!",
+  "trelloAppKey": "insert-app-key",
+  "trelloToken": "insert-trello-token",
+  "listID": "insert-list-id"
+}

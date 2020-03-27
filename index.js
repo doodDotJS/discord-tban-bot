@@ -2,7 +2,7 @@ const config = require("./config.json");
 const discord = require("discord.js");
 const client = new discord.Client();
 const Trello = require("trello");
-const trello = new Trello("d40916286a14c6655c32032dfb594d07",config.trelloToken);
+const trello = new Trello(config.trelloAppKey,config.trelloToken);
 
 
 client.on('ready', () => {
@@ -25,7 +25,7 @@ client.on("message", message => {
       icon_url: client.user.avatarURL
     },
     title: "Greetings!",
-    description: "Hey! This is a bot created by dude for tbans! Any support or questions? Use the support link below!",
+    description: "Hey! This is a bot  for tbans! Any support or questions? Use the support link below!",
     fields: [{
         name: "Prefix",
         value: "The current prefix is `!`. Ask dude if you wish to change this."
@@ -36,13 +36,13 @@ client.on("message", message => {
       },
       {
         name: "Support server.",
-        value: "Here is the link for the support server: https://discord.gg/3GaYG48 . To view our ToS, [click here](https://dude-tech-tos.glitch.me/)"
+        value: "Here is the link for the support server: https://discord.gg/3GaYG48."
       }
     ],
     timestamp: new Date(),
     footer: {
       icon_url: client.user.avatarURL,
-      text: "Made for Aztro Hotels by Dude Technologies  | V1 BETA"
+      text: "Trello ban bot"
     }
   }
 });
@@ -51,7 +51,7 @@ client.on("message", message => {
     if(!message.member.roles.some(r=>["TBan Permission"].includes(r.name)) )
             return message.channel.send({embed: {
                 color: 15406156,
-                description: "I don't think you have the facilities for that, big man. ",
+                description: "You do not have permission to run this command.",
                 author: {
                     name: message.author.tag,
                     icon_url: message.author.displayAvatarURL
@@ -59,7 +59,7 @@ client.on("message", message => {
             }});
    let targetUser = args[0];
    let banReason = args.slice(1).join(" ");
-   let listID = "5e0103909d50d08a367a91b5";
+   let listID = config.listID;
   trello.addCard(targetUser, banReason, listID,
       function (error, trelloCard) {
           if (error) {
@@ -91,7 +91,7 @@ client.on("message", message => {
     timestamp: new Date(),
     footer: {
       icon_url: client.user.avatarURL,
-      text: "Dude Technologies x Aztro Hotels| V1 BETA"
+      text: trelloCard
     }
   }
 });

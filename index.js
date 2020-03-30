@@ -25,14 +25,14 @@ client.on("message", message => {
       icon_url: client.user.avatarURL
     },
     title: "Greetings!",
-    description: "Hey! This is a bot  for tbans! Any support or questions? Use the support link below!",
+    description: "Hey! This is a bot for tbans! Any support or questions? Use the support link below!",
     fields: [{
         name: "Prefix",
-        value: "The current prefix is `!`. Ask dude if you wish to change this."
+        value: `The current prefix is ${config.prefix}.`
       },
       {
         name: "Commands.",
-        value: "The current commands are: `help` and `tban`.."
+        value: "The current commands are: `help` and `tban`."
       },
       {
         name: "Support server.",

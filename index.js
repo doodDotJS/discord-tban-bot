@@ -63,6 +63,10 @@ client.on("message", message => {
   description: "Too few arguments given. `!tban [username:userid][reason]` **REMEMBER THE COLON BETWEEN THE USERNAME AND USERID**"
 }});
    let banReason = args.slice(1).join(" ");
+    if (!banReason) return  message.channel.send({embed: {
+  color: 3447003,
+  description: "Please put in a reason. If there isn't one, put a symbol to indicate this, like a dash(-)."
+}});
    let listID = config.listID;
   trello.addCard(targetUser, banReason, listID,
       function (error, trelloCard) {

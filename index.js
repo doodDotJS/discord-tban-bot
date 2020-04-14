@@ -67,7 +67,7 @@ client.on("message", message => {
   trello.addCard(targetUser, banReason, listID,
       function (error, trelloCard) {
           if (error) {
-              console.log('An error occured with Trello card.')
+              console.log('An error occured with Trello card.' + error)
             message.channel.send({embed: {
   color: 3447003,
   description: "An error occured! Please try again later or use the support server link."
@@ -95,7 +95,7 @@ client.on("message", message => {
     timestamp: new Date(),
     footer: {
       icon_url: client.user.avatarURL,
-      text: trelloCard
+      text: "Trello ban"
     }
   }
 });

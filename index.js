@@ -2,7 +2,7 @@ const config = require("./config.json");
 const discord = require("discord.js");
 const client = new discord.Client();
 const Trello = require("trello");
-const trello = new Trello(config.trelloKey, config.trelloToken);
+const trello = new Trello(config.trelloAppKey, config.trelloToken);
 
 client.on("ready", () => {
   console.log("I am ready!");
